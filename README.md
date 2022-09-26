@@ -42,33 +42,10 @@
 - Для Python в отчете привести скриншоты с демонстрацией сохранения
 документа google.colab на свой диск с запуском программы, выводящей сообщение Hello World.
 ![image](https://user-images.githubusercontent.com/29748577/192314045-5584e489-deaa-4328-b0e9-bcf2e1364d14.png)
+Ссылка на документ google.colab: https://colab.research.google.com/drive/1ULsgCPGkYmEMN6bCasoAMInEIi2wAjcA?usp=sharing
 - Для Unity в отчете привести скришноты вывода сообщения Hello
 World в консоль.
 ![image](https://user-images.githubusercontent.com/29748577/192314301-113a6baf-572e-4af4-9cf5-4bdd7e0e3aa1.png)
-
-
-```py
-
-In [ ]:
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-#This code is for jupyter Notebook only
-%matplotlib inline
-
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
-
-#Show the effect of a scatter plot
-plt.scatter(x,y)
-
-```
-
-- Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
-
 
 ## Задание 2
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
