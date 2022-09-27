@@ -75,37 +75,35 @@ plt.scatter(x,y)
 
 ```py
 
-#The basic linear regression model is wx+ b, and since this is a two-dimensional
-space, the model is ax+ b
-def model(a, b, x):
-return a*x + b
-#Tahe most commonly used loss function of linear regression model is the loss
-function of mean variance difference
-def loss_function(a, b, x, y):
-num = len(x)
-prediction=model(a,b,x)
-return (0.5/num) * (np.square(prediction-y)).sum()
-#The optimization function mainly USES partial derivatives to update two parameters a
-and b
-def optimize(a,b,x,y):
-num = len(x)
-prediction = model(a,b,x)
-#Update the values of A and B by finding the partial derivatives of the loss
-function on a and b
-da = (1.0/num) * ((prediction -y)*x).sum()
-db = (1.0/num) * ((prediction -y).sum())
-a = a - Lr*da
-b = b - Lr*db
-return a, b
-#iterated function, return a and b
-def iterate(a,b,x,y,times):
-for i in range(times):
-a,b = optimize(a,b,x,y)
-return a,b
+#The basic linear regression model is wx+ b, and since this is a two-dimensional space, the model is ax+ b
+def model (a, b, x):
+    return a*x + b
+#Tahe most commonly used loss function of linear regression model is the loss function of mean variance difference 
+def loss_function (a, b, x, y):
+    num = len (x)
+    prediction = model(a, b, x) 
+    return (0.5/num) * (np.square (prediction-y)).sum()
+#The optimization function mainly USES partial derivatives to update two parameters a and b
+def optimize (a, b, x, y) :
+    num = len (x)
+    prediction = model (a, b,x)
+    #Update the values of A and B by finding the partial derivatives of the loss
+    da = (1.0/num) * ((prediction -y)*x).sum()
+    db = (1.0/num) * ((prediction -y).sum ())
+    a = a - Lr*da
+    b = b - Lr*db
+    return a, b
+
+#iterated function, return a and b 
+def iterate (a,b, x, y, times):
+    for i in range (times):
+        a,b = optimize (a,b,x,y)
+    return a, b
 
 ```
 
-Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192553222-cf5202b9-0b84-4e75-8117-2bb1b6472429.png)
+Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192554246-7e076015-3c0e-40f9-860a-0153211db1d8.png)
+
 
 - Начать итерацию
 	- Шаг 1 Инициализация и модель итеративной оптимизации
@@ -126,6 +124,19 @@ loss = loss_function(a, b, x, y)
 print(a,b,loss)
 plt.scatter(x,y)
 plt.plot(x,prediction)
+
+```
+Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192558018-207ad01c-19d5-412e-9eb8-c9af4859c37c.png)
+
+	-Шаг 2 На второй итерации отображаются значения параметров, значения потерь и эффекты визуализации после итерации
+```py
+
+a,b = iterate (a, b, x, y, 2)
+prediction=model (a, b, x)
+loss = loss_function (a, b, x, y)
+print (a,b, loss) 
+plt.scatter (x, y)
+plt.plot (x,prediction)
 
 ```
 Скриншот: 
