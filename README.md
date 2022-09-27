@@ -106,7 +106,7 @@ def iterate (a,b, x, y, times):
 
 
 - Начать итерацию
-	- Шаг 1 Инициализация и модель итеративной оптимизации
+- Шаг 1 Инициализация и модель итеративной оптимизации
 
 ```py
 
@@ -129,7 +129,8 @@ plt.plot(x,prediction)
 Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192559371-0a01bef7-d18b-47c4-ab8b-7ea6f27b5c02.png)
 
 
--	Шаг 2 На второй итерации отображаются значения параметров, значения потерь и эффекты визуализации после итерации
+- Шаг 2 На второй итерации отображаются значения параметров, значения потерь и эффекты визуализации после итерации
+
 ```py
 
 a,b = iterate (a, b, x, y, 2)
@@ -142,34 +143,61 @@ plt.plot (x,prediction)
 ```
 Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192559590-988681d1-0394-46bc-8b5e-5c87d5d89884.png)
 
-
-## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
-
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+-Шаг 3 Третья итерация показывает значения параметров, значения потерь и визуализацию после итерации
 
 ```py
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+a,b = iterate (a,b,x,y,3)
+prediction=model (a, b, x)
+loss = loss_function (a,b,x,y)
+print (a, b, loss) 
+plt.scatter (x, y)
+plt.plot (x,prediction)
 
 ```
+Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192560738-3109b9ce-9335-4747-96c2-013bfd9a60b2.png)
+
+-Шаг 4 На четвертой итерации отображаются значения параметров, значения потерь и эффекты визуализации
+
+```py
+
+a,b = iterate (a,b,x,y,4)
+prediction=model (a, b, x)
+loss = loss_function (a,b,x,y)
+print (a, b, loss) 
+plt.scatter (x, y)
+plt.plot (x,prediction)
+
+```
+Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192561086-f491f7d4-69ca-40e8-8bb5-ba93b9eda233.png)
+
+-Шаг 5 Пятая итерация показывает значение параметра, значение потерь и эффект визуализации после итерации
+
+```py
+
+a,b = iterate (a,b,x,y,5)
+prediction=model (a, b, x)
+loss = loss_function (a,b,x,y)
+print (a, b, loss) 
+plt.scatter (x, y)
+plt.plot (x,prediction)
+
+```
+Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192561510-6fe7c26c-e8ce-440d-92f7-021f61239d31.png)
+
+-Шаг 6 10000-я итерация, показывающая значения параметров, потери и визуализацию после итерации
+
+```py
+
+a,b = iterate (a,b,x,y,10000)
+prediction=model (a, b, x)
+loss = loss_function (a,b,x,y)
+print (a, b, loss) 
+plt.scatter (x, y)
+plt.plot (x,prediction)
+
+```
+Скриншот: ![image](https://user-images.githubusercontent.com/29748577/192562236-0d1a14a0-7de8-4501-a027-29f439056397.png)
 
 ## Выводы
 
